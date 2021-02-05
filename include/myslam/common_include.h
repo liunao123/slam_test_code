@@ -82,6 +82,7 @@ typedef Eigen::Matrix<double, 4, 4> Mat44;
 typedef Eigen::Matrix<double, 3, 4> Mat34;
 
 //double vectors
+typedef Eigen::Matrix<double, Eigen::Dynamic, 1> VecX;
 typedef Eigen::Matrix<double, 14, 1> Vec14;
 typedef Eigen::Matrix<double, 13, 1> Vec13;
 typedef Eigen::Matrix<double, 10, 1> Vec10;
