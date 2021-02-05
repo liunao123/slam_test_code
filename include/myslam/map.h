@@ -5,7 +5,7 @@
 
 #include "./common_include.h"
 #include "frame.h"
-#include "MapPoint.h"
+#include "mappoint.h"
 
 namespace myslam
 {
@@ -55,7 +55,6 @@ namespace myslam
 
         //清理map中，观测数量为0 的点
         void Cleanmap();
-
 
         private:
         //将旧的 关键帧，设置为不活跃状态
