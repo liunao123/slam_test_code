@@ -9,16 +9,16 @@
 namespace myslam
 {
     // forward declare
-    class MapPoint;
-    class Feature;
+    struct MapPoint;
+    struct Feature;
 
     /*
     每一帧都有一个ID
     关键帧，有关键帧的ID
     */
-   class Frame
+   struct Frame
    {
-       private:
+       public:
        EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
        typedef std::shared_ptr<Frame> Ptr;
 

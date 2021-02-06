@@ -48,7 +48,7 @@ namespace  myslam
            observed_times_++;
        }
 
-       void RemoveObservation(std::shared_ptr<Feature> fest);
+       void RemoveObservation(std::shared_ptr<Feature> feat);
 
        std::list <std::weak_ptr<Feature>> GetObs()
        {
