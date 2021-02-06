@@ -30,6 +30,8 @@ namespace myslam
             ///更新地图
             void UpdateMap();
 
+            
+
         private:
             void ThreadLoop();
             void DrawFrame(Frame::Ptr frame, const float* color);
@@ -37,6 +39,8 @@ namespace myslam
             void FollowCurrentFrame(pangolin::OpenGlRenderState &vis_camera);
 
             ///plot the features in the current frame into an image
+            cv::Mat PlotFrameImage();
+            
             Frame::Ptr current_frame_ = nullptr;
             Map::Ptr map_;
 
@@ -47,7 +51,7 @@ namespace myslam
             std::unordered_map<unsigned long, MapPoint::Ptr> active_landmarks_;
             bool map_updated_ = true;
 
-            std::mutex viewer_data_mutex;
+            std::mutex viewer_data_mutex_;
     };
 
 } // namespace myslam

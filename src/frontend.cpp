@@ -69,11 +69,23 @@ namespace myslam
             viewer_ -> AddCurrentFrame(current_frame_);
         }
         return true;
-
-        
-        
         
     }
+
+    bool Fronrend::SetObservationForKeyFrame()
+    {
+        for (auto &feat : current_frame_ -> features_left_)
+        {
+            auto mp = feat->map_point_lock();
+            if (mp)
+            {
+                mp->AddObservation(feat);
+            }
+            
+        }
+        
+    }
+
 
 
 } // namespace myslam
