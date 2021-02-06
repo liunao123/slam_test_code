@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef FRAME_H
-#define FRAME_H
+#ifndef MYSLAM_FRAME_H
+#define MYSLAM_FRAME_H
 
 #include "./camera.h"
 #include "./common_include.h"
@@ -9,20 +9,20 @@
 namespace myslam
 {
     // forward declare
-    struct MapPoint;
-    struct Feature;
+    class MapPoint;
+    class Feature;
 
     /*
     每一帧都有一个ID
     关键帧，有关键帧的ID
     */
-   struct Frame
+   class Frame
    {
-       public:
+       private:
        EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
        typedef std::shared_ptr<Frame> Ptr;
 
-       unsigned long id  = 0;
+       unsigned long id_  = 0;
        unsigned  long keyframe_id_ = 0;
        bool is_keyframe_ = false;
        double time_stamp_; 
@@ -65,6 +65,6 @@ namespace myslam
            
    };
    
-}
+} // namespace myslam
 
-#endif FRAME_H
+#endif //MYSLAM_FRAME_H

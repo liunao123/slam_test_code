@@ -15,8 +15,6 @@ namespace myslam
      **/
     class Dataset
     {
-    private:
-        /* data */
     public:
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
