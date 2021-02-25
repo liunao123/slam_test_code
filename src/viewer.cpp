@@ -111,9 +111,52 @@ namespace myslam
         Sophus::Matrix4f m = Twc.matrix().template cast<float> ();
         glMultMatrixf( (GLfloat*)m.data()  );
 
-
-
+        if (color == nullptr)
+            glColor3f(1, 0, 0);
+        else
+            glColor3f(color[0], color[1], color[2]);
         
+        glLineWidth(line_width);
+        glBegin(GL_LINES);
+        glVertex3f(0, 0, 0);
+        glVertex3f(sz * (0 - cx) / fx, sz * (0 - cy) / fy, sz);
+        glVertex3f(0, 0, 0);
+        glVertex3f(sz * (0 - cx) / fx, sz * (height - 1 - cy) / fy, sz);
+        glVertex3f(0, 0, 0);
+        glVertex3f(sz * (width - 1 - cx) / fx, sz * (height - 1 - cy) / fy, sz);
+        glVertex3f(0, 0, 0);
+        glVertex3f(sz * (width - 1 - cx) / fx, sz * (0 - cy) / fy, sz);
+    
+        glVertex3f(sz * (width - 1 - cx) / fx, sz * (0 - cy) / fy, sz);
+        glVertex3f(sz * (width - 1 - cx) / fx, sz * (height - 1 - cy) / fy, sz);
+    
+        glVertex3f(sz * (width - 1 - cx) / fx, sz * (height - 1 - cy) / fy, sz);
+        glVertex3f(sz * (0 - cx) / fx, sz * (height - 1 - cy) / fy, sz);
+    
+        glVertex3f(sz * (0 - cx) / fx, sz * (height - 1 - cy) / fy, sz);
+        glVertex3f(sz * (0 - cx) / fx, sz * (0 - cy) / fy, sz);
+    
+        glVertex3f(sz * (0 - cx) / fx, sz * (0 - cy) / fy, sz);
+        glVertex3f(sz * (width - 1 - cx) / fx, sz * (0 - cy) / fy, sz);        
+
+        glEnd();
+        glPopMatrix();
+    }
+
+    void Viewer::DrawMapPoint()
+    {
+        const float red[3] = {1.0, 0, 0};
+        for (auto &kf :active_keyframes_)
+            DrawFrame(kf.second, red);
+        glPointSize(2);
+        glBegin(GL_POINT);
+        for (auto &landmark : active_landmarks_ )
+        {
+            auto pos = landmark.second->Pos();
+            glColor3f(red[0], red[1], red[2]);
+            glVertex3d(pos[0], pos[1], pos[2]);
+        }
+        glEnd();        
     }
 
 } // namespace myslam

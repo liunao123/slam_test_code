@@ -30,6 +30,8 @@ namespace myslam
              **/
             bool Init();
 
+            bool Run();
+
             /**
              * start VO in the dataset
              **/
@@ -41,6 +43,8 @@ namespace myslam
 
             private:
                 bool inited_ = false;
+
+                std::string config_file_path_ = nullptr;
 
                 Frontend::Ptr frontend_ = nullptr;
                 Backend::Ptr backend_ = nullptr;
